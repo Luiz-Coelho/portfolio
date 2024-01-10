@@ -1,30 +1,24 @@
-const contentPt = {};
-
-import contentPt from "./content-pt.js";
-
-const languageButton = document.getElementById("language-button");
-let currentLanguage = "en";
-
-languageButton.addEventListener("click", () => {
-  currentLanguage = currentLanguage === "en" ? "pt" : "en";
-  updateContent();
+document.addEventListener("DOMContentLoaded", function () {
+  const elements = document.querySelectorAll("[data-lang]");
+  elements.forEach(function (element) {
+    const key = element.getAttribute("data-lang");
+    element.setAttribute("data-original", element.innerHTML); // Armazena o conteúdo original
+  });
 });
 
-function updateContent() {
-  const contentFile = `content-${currentLanguage}.js`;
-  import(`./${contentFile}`).then((content) => {
-    // Atualize o conteúdo da página
-    // ...
-  });
+function toggleLanguage() {
+  const toggleSwitch = document.getElementById("languageToggle");
+  const lang = toggleSwitch.checked ? "pt" : "en";
 
-  // Atualize a inscrição no botão
-  languageButton.textContent =
-    currentLanguage === "en" ? "Português" : "English";
-
-  // Atualize o conteúdo da página com o conteúdo traduzido
   const elements = document.querySelectorAll("[data-lang]");
-  elements.forEach((element) => {
-    const elementLang = element.dataset.lang;
-    element.textContent = contentPt[elementLang];
+
+  elements.forEach(function (element) {
+    const key = element.getAttribute("data-lang");
+
+    if (lang === "pt" && contentPt[key]) {
+      element.innerHTML = contentPt[key]; // Altera para o conteúdo em português
+    } else if (lang === "en" && element.hasAttribute("data-original")) {
+      element.innerHTML = element.getAttribute("data-original"); // Restaura o conteúdo original em inglês
+    }
   });
 }
