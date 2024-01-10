@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
   <head>
-    <title>My Portfolio</title>
+    <title data-lang="title">My Portfolio</title>
     <meta charset="utf-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, user-scalable=no"
     />
     <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/language.css" />
     <noscript
       ><link rel="stylesheet" href="assets/css/noscript.css"
     /></noscript>
@@ -17,8 +18,23 @@
     <div id="wrapper" class="fade-in">
       <!-- Intro -->
       <div id="intro">
-        <h1>My Portfolio</h1>
-        <p>This is a simple portfolio to showcase some of my projects.</p>
+        <div class="toggle-switch">
+          <label class="switch">
+            <input
+              type="checkbox"
+              id="languageToggle"
+              onchange="toggleLanguage()"
+            />
+            <span class="slider round">
+              <span class="toggle-text left">English</span>
+              <span class="toggle-text right">Português</span>
+            </span>
+          </label>
+        </div>
+        <h1 data-lang="title">My Portfolio</h1>
+        <p data-lang="introText">
+          This is a simple portfolio to showcase some of my projects.
+        </p>
         <ul class="actions">
           <li>
             <a
@@ -32,13 +48,15 @@
 
       <!-- Header -->
       <header id="header">
-        <a href="index.html" class="logo">My Portfolio</a>
+        <a href="index.html" class="logo" data-lang="title">My Portfolio</a>
       </header>
 
       <!-- Nav -->
       <nav id="nav">
         <ul class="links">
-          <li class="active"><a href="index.html">My Projects</a></li>
+          <li class="active">
+            <a href="index.html" data-lang="projects">My Projects</a>
+          </li>
         </ul>
         <ul class="icons">
           <li>
@@ -72,8 +90,8 @@
         <article class="post featured">
           <header class="major">
             <span class="date">Fullstack Developer</span>
-            <h2>My name is Luiz Felipe</h2>
-            <p>
+            <h2 data-lang="name">My name is Luiz Felipe</h2>
+            <p data-lang="aboutMe">
               I'm a new developer looking for my first job at the programming
               field.
               <br />
@@ -84,7 +102,7 @@
           </header>
           <a class="image main"><img src="images/myself.jpg" alt="" /></a>
           <ul class="actions special">
-            <li><a class="button large">This is me</a></li>
+            <li><a class="button large" data-lang="image">This is me</a></li>
           </ul>
         </article>
 
@@ -93,16 +111,13 @@
           <article>
             <header>
               <h2>
-                <a href="https://luiz-coelho.github.io/piadas/#/"
-                  >Project 1<br />
-                  Piadas</a
-                >
+                <a href="https://luiz-coelho.github.io/piadas/#/">Piadas</a>
               </h2>
             </header>
             <a href="https://luiz-coelho.github.io/piadas/#/" class="image fit"
               ><img src="images/piadas-home.png" alt=""
             /></a>
-            <p>
+            <p data-lang="project1Description">
               This is my recent project, wich is still a work in progress. The
               main point of this project is to show all my knowledge and
               expertise as a web developer. In this project I fetch some jokes
@@ -113,7 +128,10 @@
             </p>
             <ul class="actions special">
               <li>
-                <a href="https://luiz-coelho.github.io/piadas/#/" class="button"
+                <a
+                  href="https://luiz-coelho.github.io/piadas/#/"
+                  class="button"
+                  data-lang="project1Button"
                   >Check Project</a
                 >
               </li>
@@ -122,16 +140,19 @@
           <article>
             <header>
               <h2>
-                <a
-                  >Project 2<br />
-                  Costs</a
-                >
+                <a>Costs</a>
               </h2>
             </header>
             <a class="image fit"><img src="images/pic03.jpg" alt="" /></a>
-            <p>This website is not available yet.</p>
+            <p data-lang="project2Description">
+              This website is not available yet.
+            </p>
             <ul class="actions special">
-              <li><a class="button">under construction</a></li>
+              <li>
+                <a class="button" data-lang="project2Button"
+                  >under construction</a
+                >
+              </li>
             </ul>
           </article>
         </section>
@@ -189,5 +210,6 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/toggleLanguage.js"></script>
   </body>
 </html>
